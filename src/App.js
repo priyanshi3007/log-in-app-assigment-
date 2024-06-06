@@ -4,6 +4,7 @@ import Login from './components/Login';
 import Register from './components/Register';
 import Account from './components/Account';
 import Home from './components/Home';
+import ForgotPassword from './components/ForgotPassword';
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/account" element={<Account />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
         </Routes>
       </div>
     </Router>

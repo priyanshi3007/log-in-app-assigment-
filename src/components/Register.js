@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -9,12 +9,21 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
+    const storedEmail = localStorage.getItem('email');
+    
+    if (email === storedEmail) {
+      alert('You are already registered. Please login.');
+      navigate('/login');
+      return;
+    }
+
     if (password !== confirmPassword) {
       alert('Passwords do not match');
       return;
     }
     localStorage.setItem('email', email);
     localStorage.setItem('password', password);
+    alert('Registration successful! You can now login.');
     navigate('/login');
   };
 
@@ -57,6 +66,9 @@ const Register = () => {
         </div>
         <button type="submit" className="btn btn-primary">Register</button>
       </form>
+      <div className="mt-3">
+        <Link to="/login" className="link-primary">Already registered? Login here</Link>
+      </div>
     </div>
   );
 };
